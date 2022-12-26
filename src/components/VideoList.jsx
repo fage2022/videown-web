@@ -41,7 +41,7 @@ function Header({ className, items }) {
             >
               <div className="img-box">
                 {t.length ? <span>{t.length}</span> : ""}
-                <Img src={t.coverImg} width="175px" height="110px" />
+                <Img src={t.coverImg} width="100%" height="110px" />
               </div>
               <div className="info-box">
                 <h4>{t.fileName}</h4>

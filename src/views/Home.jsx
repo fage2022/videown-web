@@ -51,7 +51,7 @@ function Home({ className }) {
   };
   return (
     <div className={className}>
-      <div className="content block">
+      <div className="content">
         {keyword ? (
           <div className="search-show">
             <Alert
@@ -100,46 +100,54 @@ function Home({ className }) {
         ) : (
           ""
         )}
-        {NFTlist &&
-          NFTlist.map((t, i) => (
-            <div
-              className="item block"
-              key={i}
-              onClick={() => {
-                navigate("/play/" + t.fileHash);
-              }}
-            >
-              <Img width={384} height={202} src={t.coverImg} />
-              <PlayCircleOutlined className="play-icon" />
-              <div className="view-line block">
-                {t.views ? (
-                  <span>{t.views} views</span>
-                ) : (
-                  <span>{formatterSize(t.size)}</span>
-                )}
+        <div className="con">
+          {NFTlist &&
+            NFTlist.map((t, i) => (
+              <div
+                className="item block"
+                key={i}
+                onClick={() => {
+                  navigate("/play/" + t.fileHash);
+                }}
+              >
+                <Img width={"100%"} height={202} src={t.coverImg} />
+                <PlayCircleOutlined className="play-icon" />
+                <div className="view-line block">
+                  {t.views ? (
+                    <span>{t.views} views</span>
+                  ) : (
+                    <span>{formatterSize(t.size)}</span>
+                  )}
 
-                <label>{t.length}</label>
+                  <label>{t.length}</label>
+                </div>
+                <div className="title-line block">{t.fileName}</div>
+                <div className="icon-line block">
+                  <Identicon
+                    value={t.owner}
+                    size={28}
+                    theme={"polkadot"}
+                    style={{ width: "10%" }}
+                  />
+                  <span className="addr">{formatAddress(t.owner)}</span>
+                  <span className="blance">{t.price}TCESS</span>
+                </div>
               </div>
-              <div className="title-line block">{t.fileName}</div>
-              <div className="icon-line block">
-                <Identicon
-                  value={t.owner}
-                  size={28}
-                  theme={"polkadot"}
-                  style={{ width: "10%" }}
-                />
-                <span className="addr">{formatAddress(t.owner)}</span>
-                <span className="blance">{t.price}TCESS</span>
-              </div>
-            </div>
-          ))}
+            ))}
+        </div>
       </div>
     </div>
   );
 }
 
 export default styled(Home)`
-  padding: 70px 20px 20px;
+  padding: 70px 0px 20px;
+  .con {
+    width: 100%;
+    padding: 0 2%;
+    display: flex;
+    flex-wrap: wrap;
+  }
   .block {
     display: block;
     overflow: hidden;
@@ -154,15 +162,14 @@ export default styled(Home)`
     padding: 100px;
   }
   .search-show {
-    padding: 0 10px;
+    padding: 0 3%;
   }
   .item {
-    width: 384px;
-    float: left;
-    background-color: #ddd;
+    width: 23%;
+    background-color: rgb(221, 221, 221);
     position: relative;
-    margin: 10px;
     cursor: pointer;
+    margin: 1%;
     .play-icon {
       position: absolute;
       top: 59px;
@@ -210,7 +217,7 @@ export default styled(Home)`
         width: 60%;
       }
       .blance {
-        width: 30%;
+        width: 40%;
         text-align: right;
       }
     }

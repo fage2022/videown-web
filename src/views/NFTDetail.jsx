@@ -65,7 +65,7 @@ function Home({ className }) {
       title: "Price(CESS)",
       dataIndex: "price",
       render: (txt) => {
-        if(!txt||txt=='--') return '';
+        if (!txt || txt == "--") return "";
         return (
           <div>
             <CESSCoin width={21} height={21} /> {txt}
@@ -330,11 +330,11 @@ function Home({ className }) {
 }
 
 export default styled(Home)`
-  width: 1200px;
+  min-width: 1200px;
   display: block;
   overflow: hidden;
   margin: 0px auto;
-  padding: 70px 20px 20px;
+  padding: 70px 3% 20px;
   h1 {
     font-size: 20px;
   }

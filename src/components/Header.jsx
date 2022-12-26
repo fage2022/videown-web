@@ -166,7 +166,7 @@ function Header({ className }) {
       setAccounts(accounts);
       store.set("accounts", accounts);
       saveAccount(accounts[index]);
-      openAccountBox(accounts);
+      // openAccountBox(accounts);
     }
   };
   const saveAccount = async (account) => {
@@ -220,15 +220,31 @@ function Header({ className }) {
     <div className={className}>
       <div className="abs-header">
         <div className="header-content">
-          <span className="h-col menu-btn" onClick={toggleCollapsed}>
-            <MenuOutlined style={{ color: "#D3F36C", fontSize: 30 }} />
-          </span>
-          <span className="h-col logo-txt">
+          <span className="h-col h-col-1 menu-btn">
+            <label onClick={toggleCollapsed}>
+            <MenuOutlined
+              style={{
+                color: "#D3F36C",
+                fontSize: 30,
+                position: "absolute",
+                top: "13px",
+                left: "0px",
+              }}
+            />
+            </label>
             <NavLink to="/">
-              <img src={logo} width="160px" />
+              <img
+                src={logo}
+                style={{
+                  width: "160px",
+                  position: "absolute",
+                  top: "14px",
+                  left: "45px",
+                }}
+              />
             </NavLink>
           </span>
-          <span className="h-col search-box">
+          <span className="h-col h-col-3 search-box">
             <input
               type="text"
               onKeyUp={onInput}
@@ -238,14 +254,9 @@ function Header({ className }) {
             <SearchOutlined className="search-btn" onClick={onSearch} />
           </span>
           <span
-            className="h-col upload-btn"
+            className="h-col h-col-4 upload-btn"
             onClick={() => navigate("/create")}
           >
-            <span className="h-btn">
-              <CloudUploadOutlined /> Upload Video
-            </span>
-          </span>
-          <span className="h-col login-btn">
             {account ? (
               <span className="h-account" onClick={openAccountBox}>
                 <Identicon
@@ -266,6 +277,9 @@ function Header({ className }) {
                 <WalletOutlined /> Connect Wallet
               </span>
             )}
+            <span className="h-btn">
+              <CloudUploadOutlined /> Upload Video
+            </span>
           </span>
         </div>
       </div>
@@ -509,17 +523,17 @@ export default styled(Header)`
     clear: both;
     width: 100%;
   }
-  .abs-header .header-content .search-box .search-btn{
-    padding-left:10px;
+  .abs-header .header-content .search-box .search-btn {
+    padding-left: 10px;
   }
   .abs-header {
     overflow: hidden;
     width: 100%;
+    padding: 0 3%;
     height: 56px;
     line-height: 56px;
     background-color: #000;
     position: fixed;
-    z-index: 2;
     color: #fff;
     clear: both;
     z-index: 999999;
@@ -529,11 +543,15 @@ export default styled(Header)`
       margin: 0 auto;
       text-align: left;
       color: #fff;
-      padding: 8px 30px;
+      position: relative;
+      top: 0;
+      left: 0;
       .h-col {
+        line-height: 50px;
+        height: 50px;
+        display: block;
+        overflow: hidden;
         float: left;
-        line-height: 40px;
-        height: 40px;
         .h-btn {
           background-color: rgb(211, 243, 108);
           color: #000;
@@ -543,12 +561,19 @@ export default styled(Header)`
           text-align: center;
           display: block;
           overflow: hidden;
+          float: right;
+          margin-left: 10px;
         }
       }
+      .h-col-4 {
+        float: right;
+        margin-top: 9px;
+      }
       .menu-btn {
-        width: 50px;
-        margin-top: 8px;
+        width: 250px;
+        margin-top: 1px;
         cursor: pointer;
+        z-index: 99;
       }
       .logo-txt {
         width: 20%;
@@ -559,8 +584,10 @@ export default styled(Header)`
         }
       }
       .search-box {
-        width: 30%;
-        margin-top: 0px;
+        width: 300px;
+        position: absolute;
+        left: 35%;
+        top: 3px;
         .search-txt {
           width: calc(90% - 38px);
           max-width: 300px;
@@ -586,12 +613,11 @@ export default styled(Header)`
         }
       }
       .upload-btn {
-        width: 20%;
-        max-width: 200px;
+        width: 370px;
         cursor: pointer;
       }
       .login-btn {
-        width: 16%;
+        width: 200px;
         float: right;
         cursor: pointer;
       }
@@ -601,6 +627,9 @@ export default styled(Header)`
         position: relative;
         display: block;
         line-height: 38px;
+        float: right;
+        width: 200px;
+        margin-left: 10px;
         .addr-text {
           position: absolute;
           top: 0px;

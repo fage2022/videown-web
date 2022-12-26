@@ -162,11 +162,10 @@ function Home(props) {
 }
 
 export default styled(Home)`
-  max-width: 1500px;
   display: block;
   overflow: hidden;
   margin: 0px auto;
-  padding: 70px 20px 20px;
+  padding: 70px 3% 20px;
   .block {
     display: block;
     overflow: hidden;

@@ -222,15 +222,15 @@ function Header({ className }) {
         <div className="header-content">
           <span className="h-col h-col-1 menu-btn">
             <label onClick={toggleCollapsed}>
-            <MenuOutlined
-              style={{
-                color: "#D3F36C",
-                fontSize: 30,
-                position: "absolute",
-                top: "13px",
-                left: "0px",
-              }}
-            />
+              <MenuOutlined
+                style={{
+                  color: "#D3F36C",
+                  fontSize: 30,
+                  position: "absolute",
+                  top: "13px",
+                  left: "0px",
+                }}
+              />
             </label>
             <NavLink to="/">
               <img
@@ -253,10 +253,7 @@ function Header({ className }) {
             />
             <SearchOutlined className="search-btn" onClick={onSearch} />
           </span>
-          <span
-            className="h-col h-col-4 upload-btn"
-            onClick={() => navigate("/create")}
-          >
+          <span className="h-col h-col-4 upload-btn">
             {account ? (
               <span className="h-account" onClick={openAccountBox}>
                 <Identicon
@@ -277,7 +274,7 @@ function Header({ className }) {
                 <WalletOutlined /> Connect Wallet
               </span>
             )}
-            <span className="h-btn">
+            <span className="h-btn" onClick={() => navigate("/create")}>
               <CloudUploadOutlined /> Upload Video
             </span>
           </span>

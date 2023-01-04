@@ -18,7 +18,7 @@ import {
 import { formatImgUrl, formatterSize, formatAddress } from "../utils/formatter";
 import { formatVideoUrl, formatBalance } from "../utils/formatter";
 
-export async function controlGetList(setFun, keyword) {
+export async function controlGetList(setFun, keyword,isSelling) {
   util.loading(true);
   let result = await nftList();
   util.loading(false);
@@ -27,6 +27,9 @@ export async function controlGetList(setFun, keyword) {
     return null;
   }
   let items = result.ok.list.reverse();
+  if(isSelling){
+    items=items.filter(t=>t.price&&t.price!='--');
+  }
   items.forEach((t, i) => {
     t.key = i;
     t.price = formatBalance(t.price);

@@ -39,11 +39,11 @@ function Home({ className }) {
   const [NFTlist, setNFTlist] = useState([]);
   useEffect(() => {
     if (cat) {
-      controlGetList().then((list) => {
+      controlGetList(null, null, true).then((list) => {
         setNFTlist(list.filter((t) => t.label == cat));
       });
     } else {
-      controlGetList(setNFTlist, keyword);
+      controlGetList(setNFTlist, keyword, true);
     }
   }, [keyword, cat]);
   const onBackHome = () => {
@@ -155,7 +155,7 @@ export default styled(Home)`
   .item:hover {
     box-shadow: 1px 2px 7px 0px #0000007a;
     .play-icon {
-      color: green;
+      color: #d3f36c;
     }
   }
   .empty {

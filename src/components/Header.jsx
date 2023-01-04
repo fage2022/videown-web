@@ -640,7 +640,7 @@ export default styled(Header)`
           left: 40px;
           font-size: 14px;
           line-height: 7px;
-          color: yellow;
+          color: #d3f36c;
         }
       }
     }

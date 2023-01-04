@@ -244,7 +244,14 @@ function Home({ className }) {
             <div className="line">
               <label className="line-left">Creator</label>
               <span className="line-right">
-                <div className="addr">{formatAddress(detail.creator)}</div>
+                <div
+                  className="addr copy"
+                  onClick={() => {
+                    util.copy(detail.creator);
+                  }}
+                >
+                  {formatAddress(detail.creator)}
+                </div>
                 <div className="icon-box">
                   <Identicon
                     value={detail.creator}
@@ -257,7 +264,12 @@ function Home({ className }) {
             <div className="line">
               <label className="line-left">Owner</label>
               <span className="line-right">
-                <div className="addr">
+                <div
+                  className="addr copy"
+                  onClick={() => {
+                    util.copy(detail.owner);
+                  }}
+                >
                   {detail.owner == addr ? "You" : formatAddress(detail.owner)}
                 </div>
                 <div className="icon-box">
@@ -273,7 +285,12 @@ function Home({ className }) {
             <div className="line">
               <label className="line-left">Contract Address</label>
               <span className="line-right">
-                <div className="addr">
+                <div
+                  className="addr copy"
+                  onClick={() => {
+                    util.copy(webconfig.contractAddress);
+                  }}
+                >
                   {formatAddress(webconfig.contractAddress)}
                 </div>
               </span>
@@ -312,7 +329,14 @@ function Home({ className }) {
             <div className="line">
               <label className="line-left">File Hash</label>
               <span className="line-right">
-                <div className="addr">{formatAddress(detail.fileHash)}</div>
+                <div
+                  className="addr copy"
+                  onClick={() => {
+                    util.copy(detail.fileHash);
+                  }}
+                >
+                  {formatAddress(detail.fileHash)}
+                </div>
               </span>
             </div>
           </div>
@@ -337,6 +361,9 @@ export default styled(Home)`
   padding: 70px 3% 20px;
   h1 {
     font-size: 20px;
+  }
+  .copy {
+    cursor: copy;
   }
   .hold {
     display: block;

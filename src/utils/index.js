@@ -1,5 +1,5 @@
 import request from "./request";
-import { Modal, message, Spin } from "antd";
+import { Modal, message, notification } from "antd";
 import clipboard from "copy-to-clipboard";
 
 export {
@@ -15,7 +15,7 @@ export {
 };
 function copy(text){
   clipboard(text);
-	message.success("Copy successful !");
+  showOK("Copy successful !");
 }
 function formatAddress(addr) {
   if (!addr) return "";
@@ -37,7 +37,11 @@ function alertP(msg) {
   });
 }
 function showOK(content) {
-  message.success(content);
+  // message.success(content);
+  notification.success({
+    description:content,
+    placement:"bottomRight"
+  });
 }
 
 function confirm(content) {
